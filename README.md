@@ -6,7 +6,7 @@
 
 ## Description:
 
-Where are we? We are definitely not on Earth anymore? No fear space cadet, we have Cosmo Companion to assist us on our journey in this brand new undiscovered world! Having our trusty sidekick, we are able to uncover this new plant and while also cultivate crops.
+Where are we? We are definitely not on Earth anymore? No fear space cadet, we have Cosmo Companion to assist us on our journey in this brand new undiscovered world! Having a trusty sidekick, like Cosmos Companion, we are able to uncover this new plant and while also cultivate crops.
 
 
 ## Contributors 🛸
