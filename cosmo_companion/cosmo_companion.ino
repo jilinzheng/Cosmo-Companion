@@ -14,68 +14,119 @@ static void setSpeed(int target_speed){
   analogWrite(ENB, target_speed);
 }
 
-static void stopMovement(){
+static void stopMovement(int the_delay){
   analogWrite(IN1, PWM_MIN);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MIN);
   analogWrite(IN4, PWM_MIN);
+  delay(the_delay);
 }
 
-static void moveForward(){
+static void moveForward(int the_delay){
   analogWrite(IN1, PWM_MAX);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MIN);
-  analogWrite(IN4, 220);
+  analogWrite(IN4, 240);
+  delay(the_delay);
 }
 
-static void moveBackward(){
-  analogWrite(IN1, PWM_MAX);
+static void moveBackward(int the_delay){
+  analogWrite(IN1, PWM_MIN);
   analogWrite(IN2, PWM_MAX);
-  analogWrite(IN3, PWM_MAX);
+  analogWrite(IN3, 240);
   analogWrite(IN4, PWM_MIN);
+  delay(the_delay);
 }
 
-static void turnLeftForward(){
+static void turnLeft(int the_delay){
   analogWrite(IN1, PWM_MIN);
-  analogWrite(IN2, PWM_MIN);
+  analogWrite(IN2, PWM_MAX);
   analogWrite(IN3, PWM_MIN);
   analogWrite(IN4, PWM_MAX);
+  delay(the_delay);
 }
 
-static void turnRightForward(){
+static void turnRight(int the_delay){
   analogWrite(IN1, PWM_MAX);
-  analogWrite(IN2, PWM_MIN);
-  analogWrite(IN3, PWM_MIN);
-  analogWrite(IN4, PWM_MIN);
-}
-
-static void turnLeftBackward(){
-  analogWrite(IN1, PWM_MIN);
-  analogWrite(IN2, PWM_MAX);
-  analogWrite(IN3, PWM_MIN);
-  analogWrite(IN4, PWM_MIN);
-}
-
-static void turnRightBackward(){
-  analogWrite(IN1, PWM_MIN);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MAX);
   analogWrite(IN4, PWM_MIN);
+  delay(the_delay);
+}
+
+static void turnLeft90(){
+  setSpeed(PWM_MAX);
+  turnLeft(340);
+}
+
+static void turnRight90(){
+  setSpeed(PWM_MAX);
+  turnRight(340);
 }
 
 void drawSquare(){
-  stopMovement();
+  stopMovement(500);
+  setSpeed(PWM_MAX);
 
   for (int ii = 0; ii < 4; ++ii){
-    moveForward();
-    delay(500);
-    stopMovement();
-    delay(500);
-    turnLeftForward();
-    delay(500);
-    stopMovement();
-    delay(500);
+    moveForward(1000);
+    stopMovement(500);
+    turnLeft90();
+    stopMovement(500);
   }
+}
+
+void farm(){
+  stopMovement(500);
+  setSpeed(PWM_MAX);
+
+  moveForward(1000);
+  stopMovement(500);
+
+  turnRight90();
+  stopMovement(500);
+
+  moveForward(300);
+  stopMovement(500);
+
+  turnLeft90();
+  stopMovement(500);
+
+  moveBackward(1000);
+  stopMovement(500);
+
+  turnRight90();
+  stopMovement(500);
+
+  moveForward(300);
+  stopMovement(500);
+
+  turnLeft90();
+  stopMovement(500);
+
+  moveForward(1000);
+  stopMovement(500);
+
+  turnRight90();
+  stopMovement(500);
+
+  moveForward(300);
+  stopMovement(500);
+
+  turnLeft90();
+  stopMovement(500);
+
+  moveBackward(1000);
+  stopMovement(500);
+
+  turnLeft90();
+  stopMovement(500);
+
+  moveForward(900);
+  stopMovement(500);
+
+  turnRight90();
+  stopMovement(500);
 }
 
 void setup() {
@@ -91,28 +142,6 @@ void setup() {
 }
 
 void loop() {
-  //drawSquare();
-  setSpeed(PWM_MAX);
-  moveForward();
-  delay(1000);
-  stopMovement();
-  delay(3000);
-/* 
-  turnLeftForward();
-  delay(500);
-  stopMovement();
-  delay(500);
-  turnRightForward();
-  delay(500);
-  stopMovement();
-  delay(500);
-  turnLeftBackward();
-  delay(500);
-  stopMovement();
-  delay(500);
-  turnRightBackward();
-  delay(500);
-  stopMovement();
-  delay(500);
-   */
+  drawSquare();
+  farm();
 }
