@@ -19,31 +19,35 @@ void setSpeed(int target_speed){
   analogWrite(ENB, target_speed);
 }
 
-void stopMovement(int the_delay){
+void stopMovement(unsigned long the_delay=0){
   analogWrite(IN1, PWM_MIN);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MIN);
   analogWrite(IN4, PWM_MIN);
-  delay(the_delay);
+  if (the_delay != 0){
+    delay(the_delay);  
+  }
 }
 
-void moveForward(int the_delay){
+void moveForward(unsigned long the_delay=0){
   analogWrite(IN1, PWM_MAX);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MIN);
   analogWrite(IN4, 240);
-  delay(the_delay);
+  if (the_delay != 0){
+    delay(the_delay);  
+  }
 }
 
-void moveBackward(int the_delay){
+void moveBackward(unsigned long the_delay){
   analogWrite(IN1, PWM_MIN);
   analogWrite(IN2, PWM_MAX);
-  analogWrite(IN3, 240);
+  analogWrite(IN3, PWM_MAX);
   analogWrite(IN4, PWM_MIN);
   delay(the_delay);
 }
 
-void turnLeft(int the_delay){
+void turnLeft(unsigned long the_delay){
   analogWrite(IN1, PWM_MIN);
   analogWrite(IN2, PWM_MAX);
   analogWrite(IN3, PWM_MIN);
@@ -51,7 +55,7 @@ void turnLeft(int the_delay){
   delay(the_delay);
 }
 
-void turnRight(int the_delay){
+void turnRight(unsigned long the_delay){
   analogWrite(IN1, PWM_MAX);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MAX);

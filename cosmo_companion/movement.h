@@ -1,14 +1,14 @@
 void setSpeed(int target_speed);
 
-void stopMovement(int the_delay);
+void stopMovement(unsigned long the_delay=0);
 
-void moveForward(int the_delay);
+void moveForward(unsigned long the_delay=0);
 
-void moveBackward(int the_delay);
+void moveBackward(unsigned long the_delay);
 
-void turnLeft(int the_delay);
+void turnLeft(unsigned long the_delay);
 
-void turnRight(int the_delay);
+void turnRight(unsigned long the_delay);
 
 void turnLeft90();
 
