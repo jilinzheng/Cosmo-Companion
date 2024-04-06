@@ -1,5 +1,6 @@
-# Cosmo Companion ☄️
-                                                                                                                                            
+# Cosmo C☄️mpanion
+                
+                                                                                                                            
 
 ## Description:
 
