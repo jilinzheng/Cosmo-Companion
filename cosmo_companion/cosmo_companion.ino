@@ -22,6 +22,7 @@
 static const int trig = A5, echo = A4;
 
 Servo sensorServo;
+Servo farmerServo;
 
 static int origDist = 0, newDist = 0, closestDist = 1000;
 static int closestServoPos = 90;
@@ -45,42 +46,56 @@ void farm(){
   moveForward(1000);
   stopMovement(500);
 
+  farmerServo.write(0);
+  delay(500);
   turnRight90();
   stopMovement(500);
 
   moveForward(300);
   stopMovement(500);
 
+  farmerServo.write(180);
+  delay(500);
   turnLeft90();
   stopMovement(500);
 
   moveBackward(1000);
   stopMovement(500);
 
+  farmerServo.write(0);
+  delay(500);
   turnRight90();
   stopMovement(500);
 
   moveForward(300);
   stopMovement(500);
 
+  farmerServo.write(180);
+  delay(500);
   turnLeft90();
   stopMovement(500);
 
   moveForward(1000);
   stopMovement(500);
 
+  farmerServo.write(0);
+  delay(500);
   turnRight90();
   stopMovement(500);
 
   moveForward(300);
   stopMovement(500);
 
+  farmerServo.write(180);
+  delay(500);
   turnLeft90();
   stopMovement(500);
 
   moveBackward(1000);
   stopMovement(500);
 
+  farmerServo.write(90);
+  delay(500);
   turnLeft90();
   stopMovement(500);
 
@@ -89,21 +104,6 @@ void farm(){
 
   turnRight90();
   stopMovement(500);
-}
-
-long microsecondsToInches(long microseconds) {
-  // According to Parallax's datasheet for the PING))), there are 73.746
-  // microseconds per inch (i.e. sound travels at 1130 feet per second).
-  // This gives the distance travelled by the ping, outbound and return,
-  // so we divide by 2 to get the distance of the obstacle.
-  // See: https://www.parallax.com/package/ping-ultrasonic-distance-sensor-downloads/
-  return microseconds / 74 / 2;
-}
-long microsecondsToCentimeters(long microseconds) {
-  // The speed of sound is 340 m/s or 29 microseconds per centimeter.
-  // The ping travels out and back, so to find the distance of the object we
-  // take half of the distance travelled.
-  return microseconds / 29 / 2;
 }
 
 // Ultrasonic distance measurement Sub function
@@ -189,8 +189,8 @@ void follow() {
     // turn right and move
     if (closestServoPos <= 90 && closestDist <= TARGET_DIST_FW_MAX){
       Serial.println("TURNING RIGHT");
-      turnRight(300);
-      //turnRight((unsigned long)(340*(closestServoPos/90)));
+      //turnRight(300);
+      turnRight(340*(closestServoPos-90)/-90);
       stopMovement(500);
       //moveForward(400);
       //stopMovement(500);
@@ -205,8 +205,8 @@ void follow() {
     // turn left and move
     else if (closestDist <= TARGET_DIST_FW_MAX){
       Serial.println("TURNING LEFT");
-      turnLeft(300);
-      //turnLeft((unsigned long)(340*(closestServoPos/180)));
+      //turnLeft(300);
+      turnLeft(340*(closestServoPos-90)/90);
       stopMovement(500);
       //moveForward(400);
       //stopMovement(500);
@@ -215,6 +215,10 @@ void follow() {
     else {
       // play speaker
       origDist = getDistance();
+      while (origDist > TARGET_DIST_FW_MAX){
+        Serial.println("STUCK NEED RESCUE");
+        origDist = getDistance();
+      }
     }
   }
 }
@@ -223,6 +227,7 @@ void setup() {
   //Wire.begin();
   Serial.begin(9600);
   sensorServo.attach(3, 700, 2400);
+  sensorServo.attach(13, 700, 2400);
 
   // MOTOR CONTROL
   pinMode(IN1, OUTPUT);
@@ -239,14 +244,13 @@ void setup() {
   pinMode(echo, INPUT); // input pin
 
   // temp
-  pinMode(12, OUTPUT);
-  pinMode(13, OUTPUT);
+  //pinMode(12, OUTPUT);
+  //pinMode(13, OUTPUT);
 }
 
 void loop() {
   //drawSquare();
   //farm();
-
   follow();
 
 /* analogWrite(trig, 0);
@@ -298,8 +302,8 @@ void loop() {
   
 
   // temp
-  digitalWrite(12, HIGH);
-  digitalWrite(13, HIGH);
+  //digitalWrite(12, HIGH);
+  //digitalWrite(13, HIGH);
 
   delay(10);
 }

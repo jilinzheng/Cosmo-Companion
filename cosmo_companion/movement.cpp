@@ -30,10 +30,10 @@ void stopMovement(unsigned long the_delay=0){
 }
 
 void moveForward(unsigned long the_delay=0){
-  analogWrite(IN1, PWM_MAX);
+  analogWrite(IN1, 240);
   analogWrite(IN2, PWM_MIN);
   analogWrite(IN3, PWM_MIN);
-  analogWrite(IN4, 240);
+  analogWrite(IN4, PWM_MAX);
   if (the_delay != 0){
     delay(the_delay);  
   }
@@ -65,10 +65,10 @@ void turnRight(unsigned long the_delay){
 
 void turnLeft90(){
   setSpeed(PWM_MAX);
-  turnLeft(340);
+  turnLeft(460);
 }
 
 void turnRight90(){
   setSpeed(PWM_MAX);
-  turnRight(340);
+  turnRight(420);
 }
