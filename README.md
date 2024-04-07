@@ -1,4 +1,4 @@
-# Cosmo C☄️mpanion
+# Cosmo C☄️mpanion . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.
                 
 <p align="center">
   <img src="./etc/mars.png" />
