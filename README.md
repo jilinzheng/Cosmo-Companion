@@ -10,10 +10,10 @@ Where are we? We are definitely not on Earth anymore? No fear space cadet, we ha
 
 
 ## Contributors 🛸
-- Aadarsh Arasu (aadarsh@bu.edu) . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.🛰️
+- Aadarsh Arasu (aadarsh@bu.edu) . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. 🛰️
 - Jilin Zheng (jilin@bu.edu). ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. 🚀
-- Shawn Dong (dyst@bu.edu) . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.🔭
-- Dylan Ramdhan (dylram01@bu.edu) . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.👽
+- Shawn Dong (dyst@bu.edu) . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. 🔭
+- Dylan Ramdhan (dylram01@bu.edu) . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. 👽
 
 
 ## Resources
